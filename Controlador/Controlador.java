@@ -1,21 +1,23 @@
 package Controlador;
 
-import java.io.IOException;
-
-import javax.swing.JOptionPane;
-
-import Modelo.Model;
+import javax.swing.JFrame;
 import Vista.Vista;
 
 public class Controlador {
     
+    private static final String IMAGE_PATH = "imagen.png";
+    private static final int NUM_VIEWS = 10;
+
     public static void main(String[] args) {
-        try {
-            Model model = new Model("C:\\Users\\golden\\Documents\\NetBeansProjects\\MVC_Patrones\\src\\main\\java\\Controlador\\colores-pelo-gato-1200x550-cc.jpg");
-            Vista view = new Vista();
-            view.showImage(model.getImage());
-        } catch (IOException e) {
-            JOptionPane.showMessageDialog(null, "No se pudo cargar la imagen", "Error", JOptionPane.ERROR_MESSAGE);
+        JFrame frame = new JFrame("Flyweight Pattern Example");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setSize(500, 500);
+
+        for (int i = 0; i < NUM_VIEWS; i++) {
+            Vista view = new Vista(IMAGE_PATH);
+            frame.add(view);
         }
+
+        frame.setVisible(true);
     }
 }
