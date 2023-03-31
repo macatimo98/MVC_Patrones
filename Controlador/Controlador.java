@@ -5,7 +5,7 @@ import Vista.Vista;
 
 public class Controlador {
     
-    private static final String IMAGE_PATH = "imagen.png";
+    private static final String IMAGE_PATH = "C:\\Users\\golden\\Documents\\NetBeansProjects\\MVC_Patrones\\src\\main\\java\\Controlador\\colores-pelo-gato-1200x550-cc.jpg";
     private static final int NUM_VIEWS = 10;
 
     public static void main(String[] args) {
