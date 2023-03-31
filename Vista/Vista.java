@@ -26,4 +26,23 @@ public class Vista extends JFrame {
         imageLabel.setIcon(icon);
         setVisible(true);
     }
+
+    public void paintComponent(Graphics g){
+        super.paintComponent(g);
+        g.drawImage(imageModel.getImage(), imageModel.getX(), imageModel.getY());
+        for(int i=0; i<kkk;i++){
+            g.drawImage(imgs.get(i));        
+        }
+    }
+
+    private final ArrayList<Model>imgs = new ArrayList<>();
+    private final int kkk = 8000;
+    public Vista(Model imageModel){
+        this.imageModel = imageModel;
+        for(int i=0;i<kkk;i++){
+            imgs.add(new imageModel("C:\\Users\\golden\\Documents\\NetBeansProjects\\MVC_Patrones\\src\\main\\java\\Controlador\\colores-pelo-gato-1200x550-cc.jpg"));
+        }
+    }
+
+
 }
