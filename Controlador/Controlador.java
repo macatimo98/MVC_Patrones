@@ -9,7 +9,7 @@ public class Controlador {
     private static final int NUM_VIEWS = 10;
 
     public static void main(String[] args) {
-        JFrame frame = new JFrame("Flyweight Pattern Example");
+        JFrame frame = new JFrame("Flyweight");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(500, 500);
 
