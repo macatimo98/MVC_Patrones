@@ -1,25 +1,15 @@
 package Vista;
 
-import java.awt.Graphics;
-import javax.swing.JPanel;
+import javax.swing.JFrame;
 
-import Modelo.Model;
+import Controlador.Controlador;
 
-public class Vista extends JPanel {
-    
-    private Model imageFlyweight;
-
-    public Vista(String imagePath) {
-        this.imageFlyweight = Model.getFlyweight(imagePath);
+public class Vista {
+    public static void main(String[] args) {
+        Controlador controller = new Controlador("C:\\Users\\golden\\Documents\\NetBeansProjects\\MVC_Patrones\\src\\main\\java\\Controlador\\colores-pelo-gato-1200x550-cc.jpg", 5);
+        JFrame frame = new JFrame();
+        frame.add(controller.getPanel());
+        frame.pack();
+        frame.setVisible(true);
     }
-
-    @Override
-    public void paintComponent(Graphics g) {
-        super.paintComponent(g);
-
-        // dibujar la imagen utilizando la instancia de Flyweight
-        g.drawImage(imageFlyweight.getImage(), 0, 0, null);
-    }
-
-
 }

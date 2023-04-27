@@ -1,34 +1,34 @@
 package Modelo;
 
+import java.awt.Graphics;
 import java.awt.Image;
-import java.util.HashMap;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import javax.imageio.ImageIO;
+import javax.swing.JPanel;
 
-public class Model {
-    private static final HashMap<String, Model> flyweights = new HashMap<>();
-    private Image image;
+public class Model extends JPanel {
 
-    private Model(Image image) {
-        this.image = image;
-    }
+    private Image imagen;
+    private int cantidad;
 
-    public static Model getFlyweight(String imagePath) {
-        Model flyweight = flyweights.get(imagePath);
-
-        if (flyweight == null) {
-            Image image = loadImage(imagePath);
-            flyweight = new Model(image);
-            flyweights.put(imagePath, flyweight);
+    public Model(String rutaImagen, int cantidad) {
+        try {
+            BufferedImage img = ImageIO.read(new File(rutaImagen));
+            this.imagen = img.getScaledInstance(img.getWidth(), img.getHeight(), Image.SCALE_SMOOTH);
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-
-        return flyweight;
+        this.cantidad = cantidad;
     }
 
-    private static Image loadImage(String imagePath) {
-        // cargar la imagen desde el archivo
-        return null;
-    }
-
-    public Image getImage() {
-        return image;
+    @Override
+    public void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        for (int i = 0; i < cantidad; i++) {
+            g.drawImage(imagen, i * imagen.getWidth(null), 0, this);
+        }
     }
 }
+
